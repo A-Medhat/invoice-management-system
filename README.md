@@ -267,55 +267,7 @@ InvoiceApi/
 
 ---
 
-## 🤖 AI Invoice Extraction Flow
 
-```
-                    ┌─────────────┐
-                    │  User drops  │
-                    │  PDF / Image │
-                    └──────┬──────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │  Angular Frontend   │
-                │  (multipart upload) │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │  .NET API           │
-                │  /invoices/upload   │
-                └──────────┬──────────┘
-                           │
-              ┌────────────┼────────────┐
-              │                         │
-              ▼                         ▼
-  ┌───────────────────┐    ┌───────────────────────┐
-  │  Azure Blob       │    │  Azure Form Recognizer│
-  │  Storage          │    │  (prebuilt-invoice)   │
-  │  ─────────────    │    │  ─────────────────    │
-  │  Store original   │    │  Extract:             │
-  │  document         │    │  • Vendor Name        │
-  └───────────────────┘    │  • Invoice Total      │
-                           │  • Due Date           │
-                           │  • Invoice Number     │
-                           │  • Line Items         │
-                           └──────────┬────────────┘
-                                      │
-                                      ▼
-                           ┌─────────────────────┐
-                           │  Save to PostgreSQL  │
-                           │  with IsAiExtracted  │
-                           │  = true              │
-                           └──────────┬──────────┘
-                                      │
-                                      ▼
-                           ┌─────────────────────┐
-                           │  Return complete     │
-                           │  Invoice DTO to      │
-                           │  frontend            │
-                           └─────────────────────┘
-```
 
 ---
 
@@ -330,22 +282,7 @@ InvoiceApi/
 
 ---
 
-## 🐳 Deployment
 
-The application is fully containerized with Docker:
-
-```bash
-# One-command setup — spins up API + PostgreSQL
-docker-compose up --build
-```
-
-- **Backend**: Deployed on **Back4App** (Docker container)
-- **Frontend**: Deployed on **Vercel** (static SPA)
-- **Database**: PostgreSQL 16 with persistent volumes
-- **Auto-migration**: Database schema auto-migrates on startup
-- **Admin seeding**: Default admin user created on first run
-
----
 
 ## 📈 Impact
 
