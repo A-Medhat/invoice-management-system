@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
 </p>
 
-<h1 align="center">📄 InvoiceApi — AI-Powered Invoice Management System</h1>
+<h1 align="center">📄 AI-Powered Invoice Management System</h1>
 
 <p align="center">
   A full-stack invoice management platform that leverages <strong>Azure AI Document Intelligence</strong> to automatically extract data from uploaded invoice documents (PDF, JPEG, PNG, TIFF), eliminating ~80% of manual data entry.
